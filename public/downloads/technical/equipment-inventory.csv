@@ -1,0 +1,13 @@
+Asset ID,Category,Description,Make/Model,Capacity/Rating,Calibration Due,Current Location,Status
+WLD-001,Welding,Lincoln IDEALARC R3R-500 Welder,Lincoln Electric,500A,N/A,Shop - Bay 3,Available
+WLD-002,Welding,Miller Dynasty 700 TIG Welder,Miller Electric,700A AC/DC,N/A,Shop - Bay 3,Available
+WLD-003,Welding,Lincoln Invertec V350-PRO,Lincoln Electric,350A,N/A,Field - Site A,Deployed
+LIFT-001,Rigging,Genie GTH-1056 Telehandler,Genie Industries,"10,000 lb / 56 ft",Annual - Mar 2026,Shop Yard,Available
+LIFT-002,Rigging,10-Ton Chain Fall,Harrington,10 Tons,Annual - Jun 2025,Shop - Bay 1,Available
+LIFT-003,Rigging,25-Ton Hydraulic Jack,Enerpac,25 Tons,N/A,Shop - Bay 2,Available
+NDE-001,NDE,Olympus OmniScan MX2 PAUT,Olympus,64:128 PR,Annual - Sep 2025,Field - Site B,Deployed
+NDE-002,NDE,GE Mentor Visual IQ VideoProbe,GE Inspection,6mm probe,Annual - Nov 2025,Shop - NDE Lab,Available
+HDPE-001,Fusion,McElroy 412 Butt Fusion Machine,McElroy Mfg,"12"" IPS",Per ASTM F2620,Field - Site A,Deployed
+HDPE-002,Fusion,Georg Fischer EF Controller,Georg Fischer,Electrofusion,Calibrated - Jan 2025,Shop - Bay 4,Available
+PWHT-001,PWHT,Thermo-Couple PWHT System (12-zone),Ajax Tocco,12 zones / 100kW,Annual - Feb 2026,Field - Site C,Deployed
+ALIGN-001,Alignment,PRUFTECHNIK ROTALIGN Touch,PRUFTECHNIK,"±0.001"" resolution",Annual - Aug 2025,Shop - Bay 2,Available

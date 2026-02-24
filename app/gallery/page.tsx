@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { services, capabilities } from '@/lib/data'
+import { getAlbumSummaries } from '@/lib/gallery-albums'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
@@ -19,9 +20,10 @@ function groupByCategory<T extends { category: string }>(items: T[]): Record<str
   }, {})
 }
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
   const capsByCategory = groupByCategory(capabilities)
   const categoryKeys = Object.keys(capsByCategory)
+  const albums = await getAlbumSummaries()
 
   return (
     <>
@@ -53,6 +55,54 @@ export default function GalleryPage() {
             A technical showcase of our services and areas of expertise — illustrated with
             precision engineering diagrams built to the MAC Industrial design standard.
           </p>
+        </div>
+      </section>
+
+      {/* ── Photo Albums ─────────────────────────────────────────────────── */}
+      <section className="py-20 bg-mac-gray border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            eyebrow="Photo Albums"
+            title="Browse Project Photo Collections"
+            description="Open an album to view full-size job photo sets."
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {albums.map((album) => (
+              <Link
+                key={album.id}
+                href={`/gallery/${album.id}`}
+                className="group bg-mac-dark border border-mac-gray-light rounded-xl overflow-hidden hover:border-mac-red/40 transition-colors duration-300"
+              >
+                <div className="relative aspect-video w-full overflow-hidden bg-mac-dark">
+                  {album.coverImage ? (
+                    <Image
+                      src={album.coverImage}
+                      alt={`${album.title} album cover`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-gray-700 text-xs uppercase tracking-widest">No image</span>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-mac-dark via-transparent to-transparent opacity-50" />
+                </div>
+
+                <div className="px-4 py-4">
+                  <p className="text-white text-base font-semibold mb-1 group-hover:text-mac-red transition-colors">
+                    {album.title}
+                  </p>
+                  <p className="text-gray-500 text-xs mb-3 line-clamp-2">{album.description}</p>
+                  <span className="text-mac-red text-xs font-semibold uppercase tracking-widest">
+                    {album.imageCount} Photos
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

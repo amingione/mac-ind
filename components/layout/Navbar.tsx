@@ -10,6 +10,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const headerNavLinks = navLinks.filter(
+    (link) => !['/contact', '/resources', '/gallery'].includes(link.href),
+  )
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -45,7 +48,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => {
+            {headerNavLinks.map((link) => {
               const isActive =
                 link.href === '/'
                   ? pathname === '/'
@@ -102,7 +105,7 @@ export default function Navbar() {
           }`}
         >
           <div className="pt-4 mt-2 border-t border-white/10 bg-mac-dark/95 backdrop-blur-sm rounded-md flex flex-col gap-1">
-            {navLinks.map((link) => {
+            {headerNavLinks.map((link) => {
               const isActive =
                 link.href === '/'
                   ? pathname === '/'

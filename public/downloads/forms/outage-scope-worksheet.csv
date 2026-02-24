@@ -1,0 +1,7 @@
+WO No.,Work Item Description,System / Equipment,Priority (1-3),Estimated Labor Hrs,Craft Type,Material Needed (Y/N),Material Description,Inspection Hold Point,Status,Notes
+WO-001,"Waterwall tube replacement - 8 tubes, elevation 45-62 ft",Boiler - Unit 1,1,240,Boiler Welder,Y,"T11 Tubes 2.5"" x 0.260"" x 24 ft",RT after weld,Open,Forced outage driver
+WO-002,Air preheater basket element replacement - cold-end,APH A,2,80,Millwright,Y,Cold-end element sets (3),Visual + leak test,Open,
+WO-003,Economizer header nozzle repair - weld repair two locations,Economizer - Unit 1,1,60,Boiler Welder,N,,MT + UT after repair,Open,See inspection report INS-2024-041
+WO-004,Boiler feed pump mechanical seal replacement,BFP-1A,2,24,Millwright,Y,Mechanical seal kit (OEM),None,Open,
+WO-005,Soot blower retract/insert service - 24 blowers,Unit 1 convection pass,3,96,Mechanic,Y,Packing and seals kit,None,Backlog,Defer if time-limited
+WO-006,"HEP inspection - main steam line, 6 welds per CPS",Main Steam,1,40,NDE Tech + CWI,N,,PAUT + creep rep hold,Open,Required per ASME B31.1 CPS

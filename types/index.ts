@@ -50,6 +50,28 @@ export interface TeamMember {
   email: string
 }
 
+export type ResourceCategory =
+  | 'Company Overview'
+  | 'Capability Sheets'
+  | 'Safety & Compliance'
+  | 'Technical Specifications'
+  | 'Forms & Templates'
+  | 'Case Studies'
+
+export type ResourceFileType = 'pdf' | 'csv' | 'xlsx'
+
+export interface Resource {
+  id: string
+  title: string
+  description: string
+  category: ResourceCategory
+  fileType: ResourceFileType
+  filePath: string
+  fileSize: string
+  tags?: string[]
+  featured?: boolean
+}
+
 export interface FAQ {
   question: string
   answer: string

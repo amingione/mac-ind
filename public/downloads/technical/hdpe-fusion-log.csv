@@ -1,0 +1,6 @@
+Joint No.,Date,Operator ID,Pipe Size (in),DR Rating,Resin,Fusion Type,Heater Temp (°F),Heat Soak Time (sec),Drag Pressure (psi),Fusion Pressure (psi),Cool Time (min),Bead Width (in),Equipment ID,Pass/Fail
+BF-001,2025-03-12,OP-004,12,DR 11,PE4710,Butt Fusion,425,75,82,164,15,0.625,McElroy 412,Pass
+BF-002,2025-03-12,OP-004,12,DR 11,PE4710,Butt Fusion,425,75,82,164,15,0.600,McElroy 412,Pass
+EF-001,2025-03-13,OP-007,6,DR 11,PE4710,Electrofusion,N/A,240,N/A,N/A,25,N/A,Georg Fischer,Pass
+BF-003,2025-03-13,OP-004,12,DR 11,PE4710,Butt Fusion,425,75,82,164,15,0.650,McElroy 412,Pass
+BF-004,2025-03-14,OP-011,8,DR 11,PE4710,Butt Fusion,425,55,48,96,12,0.438,McElroy 250,Pass
