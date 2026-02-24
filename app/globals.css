@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-red: #CC1F1F;
+  --color-red-dark: #A01818;
+  --color-dark: #0D0D0D;
+  --color-gray: #1A1A1A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-mac-dark text-white antialiased;
+  }
+
+  ::selection {
+    background-color: #CC1F1F;
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1A1A1A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #CC1F1F;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .red-accent-line {
+    @apply w-12 h-1 bg-mac-red mb-6;
+  }
+
+  .card-dark {
+    @apply bg-mac-gray border border-mac-gray-light rounded-lg;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide uppercase;
+  }
+
+  .btn-primary {
+    @apply bg-mac-red hover:bg-mac-red-dark text-white font-semibold px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2 tracking-wide text-sm uppercase;
+  }
+
+  .btn-outline {
+    @apply border border-white/30 hover:border-white text-white hover:bg-white/5 font-semibold px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2 tracking-wide text-sm uppercase;
+  }
+
+  .red-left-border {
+    @apply border-l-4 border-mac-red pl-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+}
