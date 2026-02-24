@@ -1,5 +1,4 @@
-import { readdir } from 'node:fs/promises'
-import path from 'node:path'
+import galleryManifest from '@/lib/gallery-manifest.json'
 
 export type GalleryAlbum = {
   id: string
@@ -7,8 +6,6 @@ export type GalleryAlbum = {
   description: string
   folder: string
 }
-
-const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif'])
 
 export const galleryAlbums: GalleryAlbum[] = [
   {
@@ -19,27 +16,8 @@ export const galleryAlbums: GalleryAlbum[] = [
   },
 ]
 
-function toPublicImagePath(folder: string, file: string): string {
-  return `/${folder.replace(/^\/+|\/+$/g, '')}/${file}`
-}
-
-async function getImageFilesInPublicFolder(folder: string): Promise<string[]> {
-  const folderPath = path.join(process.cwd(), 'public', folder)
-  const entries = await readdir(folderPath, { withFileTypes: true })
-
-  return entries
-    .filter((entry) => entry.isFile())
-    .map((entry) => entry.name)
-    .filter((name) => IMAGE_EXTENSIONS.has(path.extname(name).toLowerCase()))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-}
-
 export async function getAlbumImages(albumId: string): Promise<string[]> {
-  const album = galleryAlbums.find((item) => item.id === albumId)
-  if (!album) return []
-
-  const files = await getImageFilesInPublicFolder(album.folder)
-  return files.map((file) => toPublicImagePath(album.folder, file))
+  return galleryManifest[albumId as keyof typeof galleryManifest] ?? []
 }
 
 export async function getAlbumSummaries(): Promise<
