@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { services } from '@/lib/data'
+import { createPageMetadata } from '@/lib/metadata'
 import SectionHeader from '@/components/ui/SectionHeader'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Services',
   description:
     'Comprehensive industrial services: maintenance, outage management, welding & fabrication, emergency response, capital projects, and resource solutions.',
-}
+  path: '/services',
+})
 
 const iconMap: Record<string, React.ReactNode> = {
   wrench: (

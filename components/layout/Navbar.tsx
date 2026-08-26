@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group" aria-label="MAC Industrial Services Home">
             <Image
-              src="/media/logo/mac-logo.png"
+              src="/media/logo/mac-logo-display.png"
               alt="MAC Industrial Services logo"
               width={180}
               height={72}

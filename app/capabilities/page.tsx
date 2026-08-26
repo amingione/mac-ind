@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { capabilities, weldingSpecs } from '@/lib/data'
+import { createPageMetadata } from '@/lib/metadata'
 import SectionHeader from '@/components/ui/SectionHeader'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Capabilities',
   description:
     'Deep industrial capabilities: air preheater repair, boiler tube replacement, P91 welding, HEP, structural steel, SO2 scrubbers, HDPE piping, and more.',
-}
+  path: '/capabilities',
+})
 
 export default function CapabilitiesPage() {
   const categories = Array.from(new Set(capabilities.map((c) => c.category)))

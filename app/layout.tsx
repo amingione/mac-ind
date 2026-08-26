@@ -3,9 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import JsonLd from '@/components/seo/JsonLd'
 import { siteConfig } from '@/lib/site'
-import { siteStructuredData } from '@/lib/structured-data'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,6 +18,9 @@ export const metadata: Metadata = {
     template: '%s | MAC Industrial Services',
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.url,
+  },
   keywords: [
     'industrial maintenance',
     'outage services',
@@ -38,12 +39,14 @@ export const metadata: Metadata = {
       'Optimizing Performance • Improving Reliability • Extending Asset Lifetime',
     type: 'website',
     locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     images: [
       {
-        url: '/media/logo/mac-logo.png',
-        width: 1024,
-        height: 1024,
-        alt: 'MAC Industrial Services logo',
+        url: siteConfig.socialImage,
+        width: 2048,
+        height: 1536,
+        alt: 'Industrial power facility served by MAC Industrial Services',
       },
     ],
   },
@@ -52,12 +55,12 @@ export const metadata: Metadata = {
     title: 'MAC Industrial Services',
     description:
       'Optimizing Performance • Improving Reliability • Extending Asset Lifetime',
-    images: ['/media/logo/mac-logo.png'],
+    images: [siteConfig.socialImage],
   },
   icons: {
-    icon: '/media/logo/mac-logo.png',
-    shortcut: '/media/logo/mac-logo.png',
-    apple: '/media/logo/mac-logo.png',
+    icon: '/media/logo/mac-logo-display.png',
+    shortcut: '/media/logo/mac-logo-display.png',
+    apple: '/media/logo/mac-logo-display.png',
   },
   robots: {
     index: true,
@@ -90,7 +93,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body>
-        <JsonLd data={siteStructuredData} />
         <Navbar />
         <main>{children}</main>
         <Footer />

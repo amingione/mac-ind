@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gallery:thumbnails": "node scripts/generate-gallery-thumbnails.mjs",
+    "seo:audit": "node scripts/audit-seo.mjs"
   },
   "dependencies": {
     "next": "14.2.29",

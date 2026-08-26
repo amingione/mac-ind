@@ -4,8 +4,11 @@ export const siteConfig = {
   description:
     'MAC Industrial Services delivers expert industrial maintenance, outage services, welding and fabrication, and emergency response to industrial facilities nationwide.',
   logo: '/media/logo/mac-logo.png',
-  email: 'JMclain@macindustrialsvcs.com',
-  phone: '+1-812-801-1391',
+  socialImage: '/images/riverview.jpg',
+  email: 'adoeppke@macindustrialsvcs.com',
+  phone: '(229) 251-9315',
+  // E.164 form for tel: links and schema.org telephone
+  phoneHref: '+12292519315',
 } as const
 
 export function absoluteUrl(path: string) {

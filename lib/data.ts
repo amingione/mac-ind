@@ -6,7 +6,7 @@ import type {
   NavLink,
   SafetyPillar,
   WeldingSpec,
-  TeamMember,
+  ContactInfo,
 } from '@/types'
 import { siteConfig } from '@/lib/site'
 
@@ -221,9 +221,8 @@ export const clients: Client[] = [
   { name: 'Ozinga', industry: 'Construction / Ready-Mix' },
 ]
 
-export const contact: TeamMember = {
-  name: 'Jayr McLain',
-  title: 'Florida Operations Manager',
+export const contact: ContactInfo = {
   phone: siteConfig.phone,
+  phoneHref: siteConfig.phoneHref,
   email: siteConfig.email,
 }

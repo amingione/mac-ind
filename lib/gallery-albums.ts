@@ -16,6 +16,13 @@ export const galleryAlbums: GalleryAlbum[] = [
   },
 ]
 
+export function getGalleryThumbnail(imagePath: string) {
+  const fileName = imagePath.split('/').pop()
+  if (!fileName) return imagePath
+
+  return `/images/jobsite-thumbnails/${fileName.replace(/\.[^.]+$/, '.jpg')}`
+}
+
 export async function getAlbumImages(albumId: string): Promise<string[]> {
   return galleryManifest[albumId as keyof typeof galleryManifest] ?? []
 }
@@ -28,7 +35,7 @@ export async function getAlbumSummaries(): Promise<
       const images = await getAlbumImages(album.id)
       return {
         ...album,
-        coverImage: images[0] ?? null,
+        coverImage: images[0] ? getGalleryThumbnail(images[0]) : null,
         imageCount: images.length,
       }
     }),

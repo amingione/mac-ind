@@ -2,7 +2,12 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { galleryAlbums, getAlbumImages } from '@/lib/gallery-albums'
+import {
+  galleryAlbums,
+  getAlbumImages,
+  getGalleryThumbnail,
+} from '@/lib/gallery-albums'
+import { createPageMetadata } from '@/lib/metadata'
 
 type Props = {
   params: {
@@ -22,10 +27,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  return {
+  return createPageMetadata({
     title: `${album.title} Album`,
     description: album.description,
-  }
+    path: `/gallery/${album.id}`,
+  })
 }
 
 export default async function AlbumPage({ params }: Props) {
@@ -81,9 +87,10 @@ export default async function AlbumPage({ params }: Props) {
                 >
                   <div className="relative aspect-video w-full overflow-hidden bg-mac-dark">
                     <Image
-                      src={imageSrc}
+                      src={getGalleryThumbnail(imageSrc)}
                       alt={`${album.title} photo ${index + 1}`}
                       fill
+                      priority={index === 0}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />

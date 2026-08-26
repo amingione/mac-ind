@@ -1,4 +1,5 @@
 import type { FAQ } from '@/types'
+import { services } from '@/lib/data'
 import { absoluteUrl, siteConfig } from '@/lib/site'
 
 interface ServiceSchemaInput {
@@ -27,7 +28,29 @@ export const siteStructuredData = {
       },
       description: siteConfig.description,
       email: siteConfig.email,
-      telephone: siteConfig.phone,
+      telephone: siteConfig.phoneHref,
+      // Core industry focus — mirrors the 'Industrial Company' business category
+      knowsAbout: [
+        'Welding & Fabrication',
+        'Plant Maintenance',
+        'Outage Services',
+      ],
+      // Built from the live services list so the schema can't drift from the site
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Industrial Services',
+        itemListElement: services.map((service) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            '@id': `${absoluteUrl(`/services/${service.id}`)}#service`,
+            name: service.title,
+            description: service.description,
+            url: absoluteUrl(`/services/${service.id}`),
+            provider: { '@id': organizationId },
+          },
+        })),
+      },
       areaServed: {
         '@type': 'Country',
         name: 'United States',

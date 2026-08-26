@@ -43,10 +43,11 @@ export interface WeldingSpec {
   description?: string
 }
 
-export interface TeamMember {
-  name: string
-  title: string
+export interface ContactInfo {
+  /** Human-readable, e.g. '(229) 251-9315' */
   phone: string
+  /** E.164 form for tel: links and schema.org, e.g. '+12292519315' */
+  phoneHref: string
   email: string
 }
 

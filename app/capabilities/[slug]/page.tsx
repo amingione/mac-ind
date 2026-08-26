@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { capabilities, services } from '@/lib/data'
 import { capabilityDetails } from '@/lib/details'
+import { createPageMetadata } from '@/lib/metadata'
 import JsonLd from '@/components/seo/JsonLd'
 import {
   createBreadcrumbSchema,
@@ -21,10 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cap = capabilities.find((c) => c.id === params.slug)
   const detail = capabilityDetails.find((d) => d.slug === params.slug)
   if (!cap) return { title: 'Not Found' }
-  return {
+  return createPageMetadata({
     title: cap.name,
     description: detail?.description ?? cap.name,
-  }
+    path: `/capabilities/${cap.id}`,
+    imagePath: cap.imagePath,
+  })
 }
 
 export default function CapabilityDetailPage({ params }: Props) {

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { services } from '@/lib/data'
 import { serviceDetails } from '@/lib/details'
+import { createPageMetadata } from '@/lib/metadata'
 import JsonLd from '@/components/seo/JsonLd'
 import {
   createBreadcrumbSchema,
@@ -20,10 +21,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = services.find((s) => s.id === params.slug)
   if (!service) return { title: 'Not Found' }
-  return {
+  return createPageMetadata({
     title: service.title,
     description: service.description,
-  }
+    path: `/services/${service.id}`,
+    imagePath: service.imagePath,
+  })
 }
 
 export default function ServiceDetailPage({ params }: Props) {

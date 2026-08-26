@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center mb-6" aria-label="MAC Industrial Services Home">
               <Image
-                src="/media/logo/mac-logo.png"
+                src="/media/logo/mac-logo-display.png"
                 alt="MAC Industrial Services logo"
                 width={260}
                 height={104}
@@ -56,12 +56,8 @@ export default function Footer() {
               Contact
             </h3>
             <div className="space-y-4">
-              <div>
-                <p className="text-white text-sm font-semibold">{contact.name}</p>
-                <p className="text-gray-500 text-xs mt-0.5">{contact.title}</p>
-              </div>
               <a
-                href={`tel:${contact.phone}`}
+                href={`tel:${contact.phoneHref}`}
                 className="flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors duration-200 group"
               >
                 <span className="w-4 h-4 text-mac-red">

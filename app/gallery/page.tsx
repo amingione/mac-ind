@@ -3,13 +3,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { services, capabilities } from '@/lib/data'
 import { getAlbumSummaries } from '@/lib/gallery-albums'
+import { createPageMetadata } from '@/lib/metadata'
 import SectionHeader from '@/components/ui/SectionHeader'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Gallery',
   description:
     'Visual showcase of MAC Industrial Services capabilities — from boiler tube repair and high-energy piping to structural steel and capital projects.',
-}
+  path: '/gallery',
+})
 
 // ── Grouped capabilities by category ────────────────────────────────────────
 function groupByCategory<T extends { category: string }>(items: T[]): Record<string, T[]> {

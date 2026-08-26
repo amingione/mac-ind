@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { safetyPillars } from '@/lib/data'
+import { createPageMetadata } from '@/lib/metadata'
 import SectionHeader from '@/components/ui/SectionHeader'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Safety & Quality',
   description:
     'MAC Industrial Services operates under a zero-compromise safety culture built on Commitment, Care, and Courage. Safety is not a priority — it is the foundation.',
-}
+  path: '/safety',
+})
 
 export default function SafetyPage() {
   return (

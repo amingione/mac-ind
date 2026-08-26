@@ -125,16 +125,9 @@ export default function ContactPage() {
                   <h2 className="text-white font-bold">Direct Contact</h2>
                 </div>
 
-                <div className="mb-5">
-                  <p className="text-white font-bold text-lg">{contact.name}</p>
-                  <p className="text-gray-500 text-xs mt-0.5 uppercase tracking-wide">
-                    {contact.title}
-                  </p>
-                </div>
-
                 <div className="space-y-3">
                   <a
-                    href={`tel:${contact.phone}`}
+                    href={`tel:${contact.phoneHref}`}
                     className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-200 group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-mac-red/10 border border-mac-red/20 flex items-center justify-center text-mac-red group-hover:bg-mac-red group-hover:text-white transition-all duration-200 flex-shrink-0">
@@ -188,7 +181,7 @@ export default function ContactPage() {
                   24/7.
                 </p>
                 <a
-                  href={`tel:${contact.phone}`}
+                  href={`tel:${contact.phoneHref}`}
                   className="btn-primary w-full justify-center text-xs"
                 >
                   Call Now: {contact.phone}
@@ -243,7 +236,7 @@ export default function ContactPage() {
                   </h2>
                   <p className="text-gray-400 mb-6">
                     We&apos;ll get back to you within 1 business hour. For
-                    urgent matters, call Jayr directly at {contact.phone}.
+                    urgent matters, call us directly at {contact.phone}.
                   </p>
                   <button
                     onClick={() => {
