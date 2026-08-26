@@ -4,6 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { services } from '@/lib/data'
 import { serviceDetails } from '@/lib/details'
+import JsonLd from '@/components/seo/JsonLd'
+import {
+  createBreadcrumbSchema,
+  createFaqSchema,
+  createServiceSchema,
+} from '@/lib/structured-data'
 
 type Props = { params: { slug: string } }
 
@@ -27,6 +33,23 @@ export default function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          createServiceSchema({
+            name: service.title,
+            description: service.description,
+            path: `/services/${service.id}`,
+            imagePath: service.imagePath,
+            category: service.title,
+          }),
+          createBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: service.title, path: `/services/${service.id}` },
+          ]),
+          createFaqSchema(detail.faqs),
+        ]}
+      />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[420px] flex items-end pb-16 pt-36 overflow-hidden bg-mac-dark">
         {/* Background image */}

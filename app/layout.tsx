@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import JsonLd from '@/components/seo/JsonLd'
+import { siteConfig } from '@/lib/site'
+import { siteStructuredData } from '@/lib/structured-data'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -11,13 +14,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://macindustrialsvcs.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: 'MAC Industrial Services | Industrial Maintenance & Outage Services',
     template: '%s | MAC Industrial Services',
   },
-  description:
-    'MAC Industrial Services delivers expert industrial maintenance, outage services, welding & fabrication, and emergency response. 40K+ professionals. 100+ years combined experience.',
+  description: siteConfig.description,
   keywords: [
     'industrial maintenance',
     'outage services',
@@ -70,7 +72,25 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-B9NSMY1RXP"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-B9NSMY1RXP');
+            `,
+          }}
+        />
+      </head>
       <body>
+        <JsonLd data={siteStructuredData} />
         <Navbar />
         <main>{children}</main>
         <Footer />

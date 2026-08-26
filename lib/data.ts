@@ -8,6 +8,7 @@ import type {
   WeldingSpec,
   TeamMember,
 } from '@/types'
+import { siteConfig } from '@/lib/site'
 
 export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
@@ -223,6 +224,6 @@ export const clients: Client[] = [
 export const contact: TeamMember = {
   name: 'Jayr McLain',
   title: 'Florida Operations Manager',
-  phone: '+1-812-801-1391',
-  email: 'JMclain@macindustrialsvcs.com',
+  phone: siteConfig.phone,
+  email: siteConfig.email,
 }

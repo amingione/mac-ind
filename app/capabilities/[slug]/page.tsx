@@ -4,6 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { capabilities, services } from '@/lib/data'
 import { capabilityDetails } from '@/lib/details'
+import JsonLd from '@/components/seo/JsonLd'
+import {
+  createBreadcrumbSchema,
+  createFaqSchema,
+  createServiceSchema,
+} from '@/lib/structured-data'
 
 type Props = { params: { slug: string } }
 
@@ -33,6 +39,23 @@ export default function CapabilityDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          createServiceSchema({
+            name: cap.name,
+            description: detail.description,
+            path: `/capabilities/${cap.id}`,
+            imagePath: cap.imagePath,
+            category: cap.category,
+          }),
+          createBreadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Capabilities', path: '/capabilities' },
+            { name: cap.name, path: `/capabilities/${cap.id}` },
+          ]),
+          ...(detail.faqs.length > 0 ? [createFaqSchema(detail.faqs)] : []),
+        ]}
+      />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[420px] flex items-end pb-16 pt-36 overflow-hidden bg-mac-dark">
         {cap.imagePath && (
